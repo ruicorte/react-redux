@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/actions';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
@@ -40,7 +40,7 @@ class Counter extends Component {
                 <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
                     {this.props.storedResults.map(res => {
-                        return (<li key={res.id} onClick={()=>this.props.onDeleteResult(res.id)}>{res.value}</li>);
+                        return (<li key={res.id} onClick={() => this.props.onDeleteResult(res.id)}>{res.value}</li>);
                     })}
                 </ul>
             </div>
@@ -62,7 +62,7 @@ const mapDispatchToProps = dispatch => {
         onAddFiveToCounter: () => dispatch({ type: actionTypes.ADD, value: 5 }),
         onSubtractFiveFromCounter: () => dispatch({ type: actionTypes.SUBTRACT, value: 5 }),
         onStoreResult: (value) => dispatch({ type: actionTypes.STORE_RESULT, value: value }),
-        onDeleteResult: (id) => dispatch({ type: actionTypes.DELETE_RESULT, id:id }),
+        onDeleteResult: (id) => dispatch({ type: actionTypes.DELETE_RESULT, id: id }),
     };
 };
 
