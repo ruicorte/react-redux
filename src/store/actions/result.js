@@ -8,9 +8,11 @@ export const saveResult = res => {
 };
 
 export const storeResult = (value) => {
-    return dispatch => {
+    return (dispatch, getState) => {
+        // const updatedValue = value * 2;
         setTimeout(() => {
-            console.log('is it done yet?');
+            console.log('is it done yet?', 'this is the current counter: ' + getState().counter.counter);
+            // dispatch(saveResult(updatedValue));
             dispatch(saveResult(value));
         }, 2000);
     }
