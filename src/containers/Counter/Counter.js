@@ -1,32 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import * as actionTypes from '../../store/actions/actions';
+// import * as actionTypes from '../../store/actions/actions';
+
+import * as actionCreators from '../../store/actions/index';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
 class Counter extends Component {
-    /*     state = {
-            counter: 0
-        }
-    
-        counterChangedHandler = (action, value) => {
-            switch (action) {
-                case 'inc':
-                    this.setState((prevState) => { return { counter: prevState.counter + 1 } })
-                    break;
-                case 'dec':
-                    this.setState((prevState) => { return { counter: prevState.counter - 1 } })
-                    break;
-                case 'add':
-                    this.setState((prevState) => { return { counter: prevState.counter + value } })
-                    break;
-                case 'sub':
-                    this.setState((prevState) => { return { counter: prevState.counter - value } })
-                    break;
-                default:
-            }
-        } */
 
     render() {
         return (
@@ -57,12 +38,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
-        onDecrementCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-        onAddFiveToCounter: () => dispatch({ type: actionTypes.ADD, value: 5 }),
-        onSubtractFiveFromCounter: () => dispatch({ type: actionTypes.SUBTRACT, value: 5 }),
-        onStoreResult: (value) => dispatch({ type: actionTypes.STORE_RESULT, value: value }),
-        onDeleteResult: (id) => dispatch({ type: actionTypes.DELETE_RESULT, id: id }),
+        // onIncrementCounter: () => dispatch({ type: actionTypes.INCREMENT }),
+        onIncrementCounter: () => dispatch(actionCreators.increment()),
+        onDecrementCounter: () => dispatch(actionCreators.decrement()),
+        onAddFiveToCounter: () => dispatch(actionCreators.add(5)),
+        onSubtractFiveFromCounter: () => dispatch(actionCreators.subtract(5)),
+        onStoreResult: (value) => dispatch(actionCreators.storeResult(value)),
+        onDeleteResult: (id) => dispatch(actionCreators.deleteResult(id)),
     };
 };
 
